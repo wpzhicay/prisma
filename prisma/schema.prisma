@@ -1,0 +1,85 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Carrera {
+  id          Int          @id @default(autoincrement())
+  nombre      String
+  facultad    String
+  estudiantes Estudiante[]
+  materias    Materia[]
+  profesores  Profesor[]
+}
+
+model Estudiante {
+  id               Int           @id @default(autoincrement())
+  nombre           String
+  correo           String        @unique
+  fecha_nacimiento DateTime
+  carrera_id       Int
+  apellido         String
+  carrera          Carrera       @relation(fields: [carrera_id], references: [id])
+  inscripciones    Inscripcion[]
+}
+
+model Profesor {
+  id         Int       @id @default(autoincrement())
+  nombre     String
+  correo     String    @unique
+  carrera_id Int
+  materias   Materia[]
+  carrera    Carrera   @relation(fields: [carrera_id], references: [id])
+  titulos    Titulo[]
+}
+
+model Materia {
+  id          Int      @id @default(autoincrement())
+  nombre      String
+  codigo      String   @unique
+  carrera_id  Int
+  profesor_id Int
+  cursos      Curso[]
+  carrera     Carrera  @relation(fields: [carrera_id], references: [id])
+  profesor    Profesor @relation(fields: [profesor_id], references: [id])
+}
+
+model Curso {
+  id            Int           @id @default(autoincrement())
+  materia_id    Int
+  periodo_id    Int
+  cupo          Int
+  horario       String
+  materia       Materia       @relation(fields: [materia_id], references: [id])
+  periodo       Periodo       @relation(fields: [periodo_id], references: [id])
+  inscripciones Inscripcion[]
+}
+
+model Titulo {
+  id          Int      @id @default(autoincrement())
+  nombre      String
+  profesor_id Int
+  profesor    Profesor @relation(fields: [profesor_id], references: [id])
+}
+
+model Inscripcion {
+  id                Int        @id @default(autoincrement())
+  estudiante_id     Int
+  curso_id          Int
+  fecha_inscripcion DateTime
+  estado            String
+  curso             Curso      @relation(fields: [curso_id], references: [id])
+  estudiante        Estudiante @relation(fields: [estudiante_id], references: [id])
+}
+
+model Periodo {
+  id           Int      @id @default(autoincrement())
+  nombre       String
+  fecha_inicio DateTime
+  fecha_fin    DateTime
+  cursos       Curso[]
+}
