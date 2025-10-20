@@ -27,14 +27,11 @@ __decorate([
     __metadata("design:type", String)
 ], CreateEstudianteDto.prototype, "fecha_nacimiento", void 0);
 __decorate([
-    IsEmail(),
+    (0, class_validator_1.IsEmail)(),
     __metadata("design:type", String)
 ], CreateEstudianteDto.prototype, "correo", void 0);
 __decorate([
     (0, class_validator_1.IsInt)(),
     __metadata("design:type", Number)
 ], CreateEstudianteDto.prototype, "carrera_id", void 0);
-function IsEmail() {
-    throw new Error('Function not implemented.');
-}
 //# sourceMappingURL=create-estudiante.dto.js.map

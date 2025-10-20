@@ -1,9 +1,46 @@
 import { CreateTituloDto } from './dto/create-titulo.dto';
 import { UpdateTituloDto } from './dto/update-titulo.dto';
+import { PrismaService } from '../prisma/prisma.service';
 export declare class TituloService {
-    create(createTituloDto: CreateTituloDto): string;
-    findAll(): string;
-    findOne(id: number): string;
-    update(id: number, updateTituloDto: UpdateTituloDto): string;
-    remove(id: number): string;
+    private prisma;
+    constructor(prisma: PrismaService);
+    create(createTituloDto: CreateTituloDto): Promise<{
+        nombre: string;
+        id: number;
+        profesor_id: number;
+    }>;
+    findAll(page?: number, limit?: number): Promise<({
+        profesor: {
+            nombre: string;
+            correo: string;
+            carrera_id: number;
+            id: number;
+        };
+    } & {
+        nombre: string;
+        id: number;
+        profesor_id: number;
+    })[]>;
+    findOne(id: number): Promise<{
+        profesor: {
+            nombre: string;
+            correo: string;
+            carrera_id: number;
+            id: number;
+        };
+    } & {
+        nombre: string;
+        id: number;
+        profesor_id: number;
+    }>;
+    update(id: number, updateTituloDto: UpdateTituloDto): Promise<{
+        nombre: string;
+        id: number;
+        profesor_id: number;
+    }>;
+    remove(id: number): Promise<{
+        nombre: string;
+        id: number;
+        profesor_id: number;
+    }>;
 }

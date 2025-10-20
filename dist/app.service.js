@@ -6,19 +6,15 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.EstudianteModule = void 0;
+exports.AppService = void 0;
 const common_1 = require("@nestjs/common");
-const estudiante_controller_1 = require("./estudiante.controller");
-const estudiante_service_1 = require("./estudiante.service");
-const prisma_module_1 = require("../prisma/prisma.module");
-let EstudianteModule = class EstudianteModule {
+let AppService = class AppService {
+    getHello() {
+        return 'Hello World!';
+    }
 };
-exports.EstudianteModule = EstudianteModule;
-exports.EstudianteModule = EstudianteModule = __decorate([
-    (0, common_1.Module)({
-        imports: [prisma_module_1.PrismaModule],
-        controllers: [estudiante_controller_1.EstudianteController],
-        providers: [estudiante_service_1.EstudianteService],
-    })
-], EstudianteModule);
-//# sourceMappingURL=estudiante.module.js.map
+exports.AppService = AppService;
+exports.AppService = AppService = __decorate([
+    (0, common_1.Injectable)()
+], AppService);
+//# sourceMappingURL=app.service.js.map

@@ -6,13 +6,13 @@ export declare class EstudianteController {
     constructor(estudianteService: EstudianteService);
     create(createEstudianteDto: CreateEstudianteDto): Promise<{
         nombre: string;
-        correo: string;
-        carrera_id: number;
         apellido: string;
         fecha_nacimiento: Date;
+        correo: string;
+        carrera_id: number;
         id: number;
     }>;
-    findAll(): import(".prisma/client").Prisma.PrismaPromise<({
+    findAll(): Promise<({
         carrera: {
             nombre: string;
             id: number;
@@ -20,13 +20,13 @@ export declare class EstudianteController {
         };
     } & {
         nombre: string;
-        correo: string;
-        carrera_id: number;
         apellido: string;
         fecha_nacimiento: Date;
+        correo: string;
+        carrera_id: number;
         id: number;
     })[]>;
-    findOne(id: string): import(".prisma/client").Prisma.Prisma__EstudianteClient<({
+    findOne(id: string): Promise<{
         carrera: {
             nombre: string;
             id: number;
@@ -34,12 +34,26 @@ export declare class EstudianteController {
         };
     } & {
         nombre: string;
-        correo: string;
-        carrera_id: number;
         apellido: string;
         fecha_nacimiento: Date;
+        correo: string;
+        carrera_id: number;
         id: number;
-    }) | null, null, import("@prisma/client/runtime/library").DefaultArgs>;
-    update(id: string, updateEstudianteDto: UpdateEstudianteDto): void;
-    remove(id: string): void;
+    }>;
+    update(id: string, updateEstudianteDto: UpdateEstudianteDto): Promise<{
+        nombre: string;
+        apellido: string;
+        fecha_nacimiento: Date;
+        correo: string;
+        carrera_id: number;
+        id: number;
+    }>;
+    remove(id: string): Promise<{
+        nombre: string;
+        apellido: string;
+        fecha_nacimiento: Date;
+        correo: string;
+        carrera_id: number;
+        id: number;
+    }>;
 }

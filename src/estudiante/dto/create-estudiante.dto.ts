@@ -1,4 +1,5 @@
-import { IsString, IsInt, IsDateString } from 'class-validator';
+import { IsString, IsInt, IsDateString, IsEmail } from 'class-validator';
+
 
 export class CreateEstudianteDto {
   @IsString()
@@ -15,7 +16,5 @@ export class CreateEstudianteDto {
   @IsInt()
   carrera_id!: number;
 }
-function IsEmail(): (target: CreateEstudianteDto, propertyKey: "correo") => void {
-  throw new Error('Function not implemented.');
-}
+
 

@@ -3,6 +3,7 @@ import { TituloService } from './titulo.service';
 import { CreateTituloDto } from './dto/create-titulo.dto';
 import { UpdateTituloDto } from './dto/update-titulo.dto';
 
+
 @Controller('titulo')
 export class TituloController {
   constructor(private readonly tituloService: TituloService) {}
