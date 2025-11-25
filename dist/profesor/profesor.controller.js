@@ -21,19 +21,19 @@ let ProfesorController = class ProfesorController {
     constructor(profesorService) {
         this.profesorService = profesorService;
     }
-    create(createProfesorDto) {
+    async create(createProfesorDto) {
         return this.profesorService.create(createProfesorDto);
     }
-    findAll() {
+    async findAll() {
         return this.profesorService.findAll();
     }
-    findOne(id) {
+    async findOne(id) {
         return this.profesorService.findOne(+id);
     }
-    update(id, updateProfesorDto) {
+    async update(id, updateProfesorDto) {
         return this.profesorService.update(+id, updateProfesorDto);
     }
-    remove(id) {
+    async remove(id) {
         return this.profesorService.remove(+id);
     }
 };
@@ -43,20 +43,20 @@ __decorate([
     __param(0, (0, common_1.Body)()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [create_profesor_dto_1.CreateProfesorDto]),
-    __metadata("design:returntype", void 0)
+    __metadata("design:returntype", Promise)
 ], ProfesorController.prototype, "create", null);
 __decorate([
     (0, common_1.Get)(),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", []),
-    __metadata("design:returntype", void 0)
+    __metadata("design:returntype", Promise)
 ], ProfesorController.prototype, "findAll", null);
 __decorate([
     (0, common_1.Get)(':id'),
     __param(0, (0, common_1.Param)('id')),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [String]),
-    __metadata("design:returntype", void 0)
+    __metadata("design:returntype", Promise)
 ], ProfesorController.prototype, "findOne", null);
 __decorate([
     (0, common_1.Patch)(':id'),
@@ -64,14 +64,14 @@ __decorate([
     __param(1, (0, common_1.Body)()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [String, update_profesor_dto_1.UpdateProfesorDto]),
-    __metadata("design:returntype", void 0)
+    __metadata("design:returntype", Promise)
 ], ProfesorController.prototype, "update", null);
 __decorate([
     (0, common_1.Delete)(':id'),
     __param(0, (0, common_1.Param)('id')),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [String]),
-    __metadata("design:returntype", void 0)
+    __metadata("design:returntype", Promise)
 ], ProfesorController.prototype, "remove", null);
 exports.ProfesorController = ProfesorController = __decorate([
     (0, common_1.Controller)('profesor'),

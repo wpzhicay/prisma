@@ -5,28 +5,56 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.MateriaService = void 0;
 const common_1 = require("@nestjs/common");
+const prisma_service_1 = require("../prisma/prisma.service");
 let MateriaService = class MateriaService {
-    create(createMateriaDto) {
-        return 'This action adds a new materia';
+    constructor(prisma) {
+        this.prisma = prisma;
     }
-    findAll() {
-        return `This action returns all materia`;
+    async create(createMateriaDto) {
+        return this.prisma.materia.create({
+            data: createMateriaDto,
+        });
     }
-    findOne(id) {
-        return `This action returns a #${id} materia`;
+    async findAll() {
+        return this.prisma.materia.findMany({
+            include: {
+                carrera: true,
+                profesor: true,
+                cursos: true,
+            },
+        });
     }
-    update(id, updateMateriaDto) {
-        return `This action updates a #${id} materia`;
+    async findOne(id) {
+        return this.prisma.materia.findUnique({
+            where: { id },
+            include: {
+                carrera: true,
+                profesor: true,
+                cursos: true,
+            },
+        });
     }
-    remove(id) {
-        return `This action removes a #${id} materia`;
+    async update(id, updateMateriaDto) {
+        return this.prisma.materia.update({
+            where: { id },
+            data: updateMateriaDto,
+        });
+    }
+    async remove(id) {
+        return this.prisma.materia.delete({
+            where: { id },
+        });
     }
 };
 exports.MateriaService = MateriaService;
 exports.MateriaService = MateriaService = __decorate([
-    (0, common_1.Injectable)()
+    (0, common_1.Injectable)(),
+    __metadata("design:paramtypes", [prisma_service_1.PrismaService])
 ], MateriaService);
 //# sourceMappingURL=materia.service.js.map

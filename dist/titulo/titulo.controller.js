@@ -21,19 +21,19 @@ let TituloController = class TituloController {
     constructor(tituloService) {
         this.tituloService = tituloService;
     }
-    create(createTituloDto) {
+    async create(createTituloDto) {
         return this.tituloService.create(createTituloDto);
     }
-    findAll() {
+    async findAll() {
         return this.tituloService.findAll();
     }
-    findOne(id) {
+    async findOne(id) {
         return this.tituloService.findOne(+id);
     }
-    update(id, updateTituloDto) {
+    async update(id, updateTituloDto) {
         return this.tituloService.update(+id, updateTituloDto);
     }
-    remove(id) {
+    async remove(id) {
         return this.tituloService.remove(+id);
     }
 };
@@ -43,20 +43,20 @@ __decorate([
     __param(0, (0, common_1.Body)()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [create_titulo_dto_1.CreateTituloDto]),
-    __metadata("design:returntype", void 0)
+    __metadata("design:returntype", Promise)
 ], TituloController.prototype, "create", null);
 __decorate([
     (0, common_1.Get)(),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", []),
-    __metadata("design:returntype", void 0)
+    __metadata("design:returntype", Promise)
 ], TituloController.prototype, "findAll", null);
 __decorate([
     (0, common_1.Get)(':id'),
     __param(0, (0, common_1.Param)('id')),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [String]),
-    __metadata("design:returntype", void 0)
+    __metadata("design:returntype", Promise)
 ], TituloController.prototype, "findOne", null);
 __decorate([
     (0, common_1.Patch)(':id'),
@@ -64,14 +64,14 @@ __decorate([
     __param(1, (0, common_1.Body)()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [String, update_titulo_dto_1.UpdateTituloDto]),
-    __metadata("design:returntype", void 0)
+    __metadata("design:returntype", Promise)
 ], TituloController.prototype, "update", null);
 __decorate([
     (0, common_1.Delete)(':id'),
     __param(0, (0, common_1.Param)('id')),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [String]),
-    __metadata("design:returntype", void 0)
+    __metadata("design:returntype", Promise)
 ], TituloController.prototype, "remove", null);
 exports.TituloController = TituloController = __decorate([
     (0, common_1.Controller)('titulo'),

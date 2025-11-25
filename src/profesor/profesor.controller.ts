@@ -8,27 +8,27 @@ export class ProfesorController {
   constructor(private readonly profesorService: ProfesorService) {}
 
   @Post()
-  create(@Body() createProfesorDto: CreateProfesorDto) {
+ async create(@Body() createProfesorDto: CreateProfesorDto) {
     return this.profesorService.create(createProfesorDto);
   }
 
   @Get()
-  findAll() {
+  async findAll() {
     return this.profesorService.findAll();
   }
 
   @Get(':id')
-  findOne(@Param('id') id: string) {
+  async findOne(@Param('id') id: string) {
     return this.profesorService.findOne(+id);
   }
 
   @Patch(':id')
-  update(@Param('id') id: string, @Body() updateProfesorDto: UpdateProfesorDto) {
+  async update(@Param('id') id: string, @Body() updateProfesorDto: UpdateProfesorDto) {
     return this.profesorService.update(+id, updateProfesorDto);
   }
 
   @Delete(':id')
-  remove(@Param('id') id: string) {
+  async remove(@Param('id') id: string) {
     return this.profesorService.remove(+id);
   }
 }

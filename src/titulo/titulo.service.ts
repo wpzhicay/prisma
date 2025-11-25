@@ -66,8 +66,6 @@ export class TituloService {
       data: updateTituloDto,
     });
   }
-
-  // Eliminar con validación previa
   async remove(id: number) {
     await this.findOne(id);
     return this.prisma.titulo.delete({

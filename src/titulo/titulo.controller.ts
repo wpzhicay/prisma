@@ -9,27 +9,27 @@ export class TituloController {
   constructor(private readonly tituloService: TituloService) {}
 
   @Post()
-  create(@Body() createTituloDto: CreateTituloDto) {
+  async create(@Body() createTituloDto: CreateTituloDto) {
     return this.tituloService.create(createTituloDto);
   }
 
   @Get()
-  findAll() {
+  async findAll() {
     return this.tituloService.findAll();
   }
 
   @Get(':id')
-  findOne(@Param('id') id: string) {
+  async findOne(@Param('id') id: string) {
     return this.tituloService.findOne(+id);
   }
 
   @Patch(':id')
-  update(@Param('id') id: string, @Body() updateTituloDto: UpdateTituloDto) {
+  async update(@Param('id') id: string, @Body() updateTituloDto: UpdateTituloDto) {
     return this.tituloService.update(+id, updateTituloDto);
   }
 
   @Delete(':id')
-  remove(@Param('id') id: string) {
+  async remove(@Param('id') id: string) {
     return this.tituloService.remove(+id);
   }
 }

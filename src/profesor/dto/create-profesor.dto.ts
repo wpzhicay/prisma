@@ -1,4 +1,4 @@
-// src/profesor/dto/create-profesor.dto.ts
+
 import { IsString, IsEmail, IsInt } from 'class-validator';
 export class CreateProfesorDto {
   @IsString()
