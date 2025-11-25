@@ -9,9 +9,11 @@ import { CursoModule } from './curso/curso.module';
 import { InscripcionModule } from './inscripcion/inscripcion.module';
 import { PrismaModule } from './prisma/prisma.module';
 import { AppService } from './app.service';
+import { AuthModule } from './auth/auth.module';
+import { UsersModule } from './users/users.module';
 
 @Module({
-  imports: [EstudianteModule, CarreraModule, ProfesorModule, TituloModule, MateriaModule, CursoModule, InscripcionModule, PrismaModule],
+  imports: [EstudianteModule, CarreraModule, ProfesorModule, TituloModule, MateriaModule, CursoModule, InscripcionModule, PrismaModule, AuthModule, UsersModule],
   controllers: [AppController],
   providers: [AppService],
 })
